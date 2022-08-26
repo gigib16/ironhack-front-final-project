@@ -1,0 +1,136 @@
+$primary-color: #e31d39;
+$light: #fff;
+$semilight: #F2F4F7;
+$semidark: #474955;
+
+main.landing-page {
+  padding-top: 100px;
+  min-height: 75vh;
+  section {
+    min-height: 80vh;
+    &.jumbotron {
+      padding: 0;
+      background-color: $light;
+      display: flex;
+      height: 80vh;
+      > div {
+        height: 100%;
+        &.picture {
+          height: 100%;
+          img {
+            height: 100%;
+          }
+        }
+        &.content {
+          padding: 50px 30px;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          >div >img{
+            height: 30px;
+          }
+          > h1 {
+            font-family: "Lexend-ExtraBold";
+            font-size: 60px;
+            margin-bottom: 20px;
+          }
+          > p {
+            font-family: "Lexend-Bold";
+            word-spacing: 5px;
+            margin-bottom: 20px;
+          }
+          > .btn {
+            font-family: "Lexend-Bold";
+          }
+        }
+      }
+    }
+    &.about {
+      > div.row {
+        padding: 0 100px;
+        h1.title {
+          font-family: "Lexend-ExtraBold";
+          font-size: 45px;
+          margin-bottom: 20px;
+          color: $semidark;
+        }
+        p.subtitle {
+          font-family: "Lexend-Light";
+          word-spacing: 5px;
+          margin-bottom: 20px;
+        }
+        > div.col-10 {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+        >div.col-5{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 35px;
+          >img{
+            width: 100%;
+            &.payment{
+              width: 75%;
+            }
+          }
+
+        }
+      }
+    }
+    &.testimoni {
+      background-color: $semilight;
+      padding: 100px 0;
+      > div.row {
+        padding: 0 100px;
+        h1.title {
+          font-family: "Lexend-ExtraBold";
+          font-size: 45px;
+          margin-bottom: 20px;
+          color: $semidark;
+        }
+        p.subtitle {
+          font-family: "Lexend-Light";
+          word-spacing: 5px;
+          margin-bottom: 20px;
+        }
+        > div.col-10 {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+        >div.col-5{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 35px;
+          >img{
+            width: 100%;
+            &.payment{
+              width: 75%;
+            }
+          }
+
+        }
+      }
+    }
+    
+  }
+  
+  @media (max-width: 1220px) {
+    section {
+      
+    }
+  }
+  @media (max-width: 991px) {
+    section {
+      
+    }
+  }
+  @media (max-width: 991px) {
+    padding-top: 100px;
+  }
+}
