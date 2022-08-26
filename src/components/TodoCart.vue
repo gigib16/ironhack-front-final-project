@@ -4,31 +4,45 @@
       <a @click="clickEdit" class="edit"><img src="../assets/icon-edit.svg"/></a>
       <a @click="clickDelete" class="delete"><img src="../assets/icon-delete.svg"/></a>
     </div>
-    <h2>Task 1</h2>
-    <p>Description for Task 1</p>
+    <h2>{{ name }}</h2>
+    <p>{{ description }}</p>
     <div class="status">
       <label>Status</label>
-      <select>
-        <option>To Do</option>
-        <option>On going</option>
-        <option>Done</option>
+      <select @change="updateStatus">
+        <option :selected="status === 'todo'" value="todo">To Do</option>
+        <option :selected="status === 'ongoing'" value="ongoing">On going</option>
+        <option :selected="status === 'done'" value="done">Done</option>
       </select>
     </div>
   </div>
 </template>
 
 <script>
+import pinia from "@/store/store.js";
+import {useTasksStore} from "@/store/task";
+const tasksStore = useTasksStore(pinia)
+
 export default {
+  props: ["id", "name", "description", "status"],
   data() {
     return {};
   },
   methods: {
     clickEdit(){
+      tasksStore.updateCurrentId(this.id);
       this.$emit('clickEdit', true)
     },
     clickDelete(){
+      tasksStore.updateCurrentId(this.id);
       this.$emit('clickDelete', true)
     },
+    updateStatus(e){
+      console.log(e.target.value);
+      tasksStore.updateStatus({
+        id: this.id,
+        status: e.target.value
+      });
+    }
   },
 };
 </script>

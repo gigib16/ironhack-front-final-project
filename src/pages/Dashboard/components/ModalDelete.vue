@@ -1,6 +1,6 @@
 <template>
   <the-modal title="Delete task" @close="close">
-    <form class="modal" autocomplete="false">
+    <form class="modal" autocomplete="false" @submit="submitDelete">
       <button>
         Delete this task now!
       </button>
@@ -10,11 +10,20 @@
 
 <script>
 import TheModal from "@/components/TheModal";
+import pinia from "@/store/store.js";
+import {useTasksStore} from "@/store/task";
+const tasksStore = useTasksStore(pinia)
+
 export default {
   components: {TheModal},
   props: ["title"],
   methods: {
     close(){
+      this.$emit("close", false);
+    },
+    submitDelete(e){
+      e.preventDefault();
+      tasksStore.deleteTodo(tasksStore.currentId);
       this.$emit("close", false);
     }
   }

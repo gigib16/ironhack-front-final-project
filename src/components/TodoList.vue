@@ -5,14 +5,14 @@
       <a @click="clickAdd" v-if="name==='To Do'" class="edit">Add new Task</a>
     </div>
     <div class="body">
-      <todo-card @click-edit="clickEdit" @click-delete="clickDelete"/>
+      <todo-card v-for="d in data" :id="d.id" :key="d.id" :name="d.name" :description="d.description" :status="d.status" @click-edit="clickEdit" @click-delete="clickDelete"/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["name"],
+  props: ["name", "data"],
   data() {
     return {};
   },
@@ -20,11 +20,11 @@ export default {
     clickAdd(){
       this.$emit('add', true)
     },
-    clickEdit(v){
-      this.$emit('edit', v)
+    clickEdit(x){
+      this.$emit('edit', x)
     },
-    clickDelete(v){
-      this.$emit('delete', v)
+    clickDelete(x){
+      this.$emit('delete', x)
     },
   },
 };
