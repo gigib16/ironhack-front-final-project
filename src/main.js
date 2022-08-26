@@ -14,10 +14,6 @@ app.use(router);
 app.use(pinia);
 app.use(VueAxios, axios);
 
-import {useTasksStore} from "@/store/task";
-const tasksStore = useTasksStore()
-console.log(tasksStore)
-
 app.component("todo-list", TodoList);
 app.component("todo-card", TodoCart);
 

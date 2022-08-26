@@ -14,15 +14,10 @@
 import ModalAdd from "@/pages/Dashboard/components/ModalAdd";
 import ModalEdit from "@/pages/Dashboard/components/ModalEdit";
 import ModalDelete from "@/pages/Dashboard/components/ModalDelete";
-// import { storeToRefs } from "pinia";
-// import {useTasksStore} from "@/store/task";
-
-// import {useTasksStore} from "@/store/task";
-// const tasksStore = useTasksStore()
-// console.log(tasksStore)
-// // const {data} = storeToRefs(tasksStore);
-// console.log(data)
-
+import pinia from "@/store/store.js";
+import {useTasksStore} from "@/store/task";
+const tasksStore = useTasksStore(pinia)
+console.log(tasksStore)
 export default {
   components: {ModalDelete, ModalEdit, ModalAdd},
   data() {
@@ -32,7 +27,11 @@ export default {
       isModalDelete: false,
     }
   },
-  computed: {},
+  computed: {
+    dataToDo(){
+      return tasksStore.todoTodos;
+    },
+  },
   methods: {
     toggleAdd(v) {
       this.isModalAdd = v;
