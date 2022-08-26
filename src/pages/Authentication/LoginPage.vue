@@ -3,21 +3,34 @@
     <div class="auth-container">
       <img src="../../assets/logo.png" alt="OrganizApplogo">
       <h1>Welcome</h1>
-      <input type="text" placeholder="Enter your email" name="uname" required>
-      <input type="password" placeholder="Enter your password" name="psw" required>
-      <button type="submit">Sign In</button>
+      <form autocomplete="off" @submit="submitData">
+        <input v-model="email" type="email" placeholder="Enter your email" required>
+        <input v-model="password" type="password" placeholder="Enter your password" required>
+        <button type="submit">Sign In</button>
+      </form>
       <p class>Not registered yet? <a href="/signup">Create a new user</a></p>
     </div>
   </main>
 </template>
 
 <script>
+import pinia from "@/store/store.js";
+import {useUserStore} from "@/store/user";
+const userStore = useUserStore(pinia)
 export default {
   data() {
-    return {};
+    return {
+      email: '',
+      password: ''
+    };
   },
   computed: {},
-  methods: {},
+  methods: {
+    submitData(e){
+      e.preventDefault();
+      userStore.signIn({email: this.email, password: this.password})
+    }
+  },
   created() {
 
   },
@@ -25,5 +38,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

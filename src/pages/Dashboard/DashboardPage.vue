@@ -16,7 +16,6 @@ import ModalEdit from "@/pages/Dashboard/components/ModalEdit";
 import ModalDelete from "@/pages/Dashboard/components/ModalDelete";
 import pinia from "@/store/store.js";
 import {useTasksStore} from "@/store/task";
-
 const tasksStore = useTasksStore(pinia)
 
 export default {

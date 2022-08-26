@@ -3,93 +3,49 @@
     <div class="auth-container">
       <img src="../../assets/logo.png" alt="OrganizApplogo">
       <h1>Sign Up</h1>
-      <input type="text" placeholder="Enter your email" name="uname" required>
-      <input type="password" placeholder="Enter new password" name="psw" required>
-      <input type="password" placeholder="Repear password" name="psw" required>
-      <button type="submit">Create new user</button>
+      <form autocomplete="off" @submit="submitForm">
+        <input v-model="email" type="email" placeholder="Enter your email" required>
+        <input v-model="password" type="password" placeholder="Enter new password" required>
+        <input v-model="password2" type="password" placeholder="Repear password" required>
+        <button type="submit">Create new user</button>
+      </form>
       <p class>Already registered? <a href="#">Login here</a></p>
     </div>
   </main>
 </template>
 
 <script>
+import pinia from "@/store/store.js";
+import {useUserStore} from "@/store/user";
+const userStore = useUserStore(pinia)
 export default {
   data() {
     return {
-      // name: "",
-      // phone: "",
-      // email: "",
-      // password: "",
-      // password_confirmation: "",
-      name: "Yehuda Dani Utomo",
-      phone: "08155176008",
-      email: "yehuda@ecofit.id",
-      password: "test1234",
-      password_confirmation: "test1234",
-
-      formStatus: false,
-      notifStatus: "info",
-      notifMessage: null,
+      email: "",
+      password: "",
+      password2: "",
     };
   },
   computed: {},
   methods: {
-    nameData(value) {
-      this.name = value.trim();
-    },
-    phoneData(value) {
-      this.phone = value.trim();
-    },
-    emailData(value) {
-      this.email = value.trim();
-    },
-    passwordData(value) {
-      this.password = value;
-    },
-    passwordConfirmationData(value) {
-      this.password_confirmation = value;
-    },
-    async submitForm() {
-      this.isLoading = true;
-      const notif = {
-        class: "danger",
-        message: "Semua input field wajib diisi",
-      };
-      if (
-          this.name.length === 0 ||
-          this.phone.length === 0 ||
-          this.email.length === 0 ||
-          this.password.length === 0 ||
-          this.password_confirmation.length === 0
-      ) {
-        this.$store.dispatch("addNotif", notif);
-        return;
-      }
+    async submitForm(e) {
+      e.preventDefault();
       if (this.password.length < 8) {
-        notif.message = "Password anda kurang dari 8 karakter!";
-        this.$store.dispatch("addNotif", notif);
+        alert("Password min. 8 characters");
         return;
       }
 
-      if (this.password !== this.password_confirmation) {
-        notif.message = "Password anda tidak sama!";
-        this.$store.dispatch("addNotif", notif);
+      if (this.password !== this.password2) {
+        alert("No same password!");
         return;
       }
 
-      const actionPayload = {
-        fullname: this.name,
-        phone: this.phone,
+      const payload = {
         email: this.email,
         password: this.password,
       };
 
-      const response = await this.$store.dispatch('signup', actionPayload);
-      if (response === 201) {
-        await this.$router.push('/verification');
-        return;
-      }
-      this.isLoading = false;
+      await userStore.signUp(payload)
     },
   },
   created() {
