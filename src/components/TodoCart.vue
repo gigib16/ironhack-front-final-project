@@ -1,8 +1,8 @@
 <template>
   <div class="todo-card">
     <div class="menu">
-      <a class="edit"><img src="../assets/icon-edit.svg"/></a>
-      <a class="delete"><img src="../assets/icon-delete.svg"/></a>
+      <a @click="clickEdit" class="edit"><img src="../assets/icon-edit.svg"/></a>
+      <a @click="clickDelete" class="delete"><img src="../assets/icon-delete.svg"/></a>
     </div>
     <h2>Task 1</h2>
     <p>Description for Task 1</p>
@@ -22,7 +22,14 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    clickEdit(){
+      this.$emit('clickEdit', true)
+    },
+    clickDelete(){
+      this.$emit('clickDelete', true)
+    },
+  },
 };
 </script>
 

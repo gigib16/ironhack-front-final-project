@@ -1,5 +1,5 @@
 <template>
-  <the-modal title="Create a new task" @close="close">
+  <the-modal title="Edit task" @close="close">
     <form class="modal" autocomplete="false">
       <div class="form-input">
         <label>Title</label>
@@ -10,7 +10,7 @@
         <input type="text" placeholder="Description">
       </div>
       <button>
-        Save
+        Update
       </button>
     </form>
   </the-modal>

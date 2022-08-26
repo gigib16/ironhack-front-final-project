@@ -3,7 +3,7 @@
     <div class="modal-container">
       <div class="header">
         <h1>{{ title }}</h1>
-        <a class="close"><img src="../assets/icon-times.svg" /></a>
+        <a @click="close" class="close"><img src="../assets/icon-times.svg" /></a>
       </div>
       <div class="body">
         <slot></slot>
@@ -14,7 +14,12 @@
 
 <script>
 export default {
- props: ["title"]
+ props: ["title"],
+  methods: {
+   close(){
+     this.$emit('close');
+   }
+  }
 };
 </script>
 
@@ -53,6 +58,7 @@ export default {
         color: #000000;
       }
       >a{
+        cursor: pointer;
         img{
           width: 20px;
         }

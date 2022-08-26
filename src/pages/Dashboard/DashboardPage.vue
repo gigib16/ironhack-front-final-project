@@ -1,26 +1,39 @@
 <template>
   <main class="dashboard">
-    <todo-list @click="modalAdd" name="To Do"/>
-    <todo-list name="On Going"/>
-    <todo-list name="Done"/>
-    <modal-add v-if="isModalAdd" />
+    <todo-list @edit="toggleEdit" @delete="toggleDelete" @add="toggleAdd" name="To Do"/>
+    <todo-list @edit="toggleEdit" @delete="toggleDelete" name="On Going"/>
+    <todo-list @edit="toggleEdit" @delete="toggleDelete" name="Done"/>
+    <modal-add @close="toggleAdd" v-if="isModalAdd"/>
+    <modal-edit @close="toggleEdit" v-if="isModalEdit"/>
+    <modal-delete @close="toggleDelete" v-if="isModalDelete"/>
   </main>
 </template>
 
 <script>
 
 import ModalAdd from "@/pages/Dashboard/components/ModalAdd";
+import ModalEdit from "@/pages/Dashboard/components/ModalEdit";
+import ModalDelete from "@/pages/Dashboard/components/ModalDelete";
+
 export default {
-  components: {ModalAdd},
+  components: {ModalDelete, ModalEdit, ModalAdd},
   data() {
     return {
       isModalAdd: false,
+      isModalEdit: false,
+      isModalDelete: false,
     }
   },
   computed: {},
   methods: {
-    modalAdd(){
-      this.isModalAdd = true;
+    toggleAdd(v) {
+      this.isModalAdd = v;
+    },
+    toggleEdit(v) {
+      this.isModalEdit = v;
+    },
+    toggleDelete(v) {
+      this.isModalDelete = v;
     }
   },
   mounted() {

@@ -1,16 +1,8 @@
 <template>
-  <the-modal title="Create a new task" @close="close">
+  <the-modal title="Delete task" @close="close">
     <form class="modal" autocomplete="false">
-      <div class="form-input">
-        <label>Title</label>
-        <input type="text" placeholder="Title">
-      </div>
-      <div class="form-input">
-        <label>Description</label>
-        <input type="text" placeholder="Description">
-      </div>
       <button>
-        Save
+        Delete this task now!
       </button>
     </form>
   </the-modal>

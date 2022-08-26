@@ -5,10 +5,7 @@
       <a @click="clickAdd" v-if="name==='To Do'" class="edit">Add new Task</a>
     </div>
     <div class="body">
-      <todo-card/>
-      <todo-card/>
-      <todo-card/>
-      <todo-card/>
+      <todo-card @click-edit="clickEdit" @click-delete="clickDelete"/>
     </div>
   </div>
 </template>
@@ -21,8 +18,14 @@ export default {
   },
   methods: {
     clickAdd(){
-      this.$emit('click')
-    }
+      this.$emit('add', true)
+    },
+    clickEdit(v){
+      this.$emit('edit', v)
+    },
+    clickDelete(v){
+      this.$emit('delete', v)
+    },
   },
 };
 </script>
