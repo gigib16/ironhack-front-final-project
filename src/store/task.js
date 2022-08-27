@@ -1,49 +1,60 @@
-import { defineStore } from 'pinia'
+import {defineStore} from 'pinia'
+import {supabase} from "@/supabase";
 
 export const useTasksStore = defineStore('todos', {
     state: () => ({
-        todos: [],
-        currentId: null,
-    }),
-    getters: {
+        todos: [], currentId: null,
+    }), getters: {
         doneTodos(state) {
             // autocompletion! ✨
             return state.todos.filter((todo) => todo.status === 'done')
-        },
-        ongoingTodos(state) {
+        }, ongoingTodos(state) {
             return state.todos.filter((todo) => todo.status === 'ongoing')
-        },
-        todoTodos(state) {
+        }, todoTodos(state) {
             return state.todos.filter((todo) => todo.status === 'todo')
-        },
-        dataDetail(state) {
+        }, dataDetail(state) {
             return state.todos.find((todo) => todo.id === state.currentId)
         },
-    },
-    actions: {
+    }, actions: {
         updateCurrentId(payload) {
             console.log(payload)
             this.currentId = payload
-        },
-        updateStatus(payload) {
-            const idx = this.todos.findIndex(data => data.id === payload.id);
-            this.todos[idx].status = payload.status;
-        },
-        addTodo(payload) {
-            let id = 1;
-            if(this.todos.length > 0){
-                id = this.todos[this.todos.length - 1].id ++;
+        }, async updateStatus(payload) {
+            const {data} = await supabase.from('tasks')
+                .update({status: payload.status})
+                .match({id: payload.id, user_id: payload.user_id})
+            if(data){
+                await this.getTodoSync(payload.user_id)
             }
-            this.todos.push({ ...payload, id: id, status: 'todo' })
-        },
-        editTodo(payload) {
-            const idx = this.todos.findIndex(data => data.id === payload.id);
-            this.todos[idx].name = payload.name;
-            this.todos[idx].description = payload.description;
+        }, async addTodo(payload) {
+            const {data} = await supabase.from('tasks').insert({...payload, status: 'todo'})
+            if(data){
+                this.getTodoSync(payload.user_id);
+            }
+        }, async editTodo(payload) {
+            console.log(payload)
+            const {data} = await supabase.from('tasks')
+                .update({name: payload.name, description: payload.description})
+                .match({id: payload.id, user_id: payload.user_id})
+            if(data){
+                await this.getTodoSync(payload.user_id)
+            }
             this.currentId = null;
-        },
-        deleteTodo(payload) {
-            this.todos = this.todos.filter(data => data.id !== payload);
+        }, async deleteTodo(payload1, payload2) {
+            const {data} = await supabase.from('tasks')
+                .delete()
+                .match({id: payload1, user_id: payload2})
+            if(data){
+                await this.getTodoSync(payload2)
+            }
+            this.currentId = null;
+        }, async getTodoSync(user_id) {
+            const {data: tasks} = await supabase
+                .from("tasks")
+                .select("*")
+                .eq('user_id', user_id)
+                .order("id", {ascending: true});
+            this.todos = tasks;
         },
     },
 })

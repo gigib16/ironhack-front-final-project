@@ -20,7 +20,10 @@
 import TheModal from "@/components/TheModal";
 import pinia from "@/store/store.js";
 import {useTasksStore} from "@/store/task";
+import {useUserStore} from "@/store/user";
 const tasksStore = useTasksStore(pinia)
+const userStore = useUserStore(pinia)
+
 
 export default {
   components: {TheModal},
@@ -41,7 +44,8 @@ export default {
       tasksStore.editTodo({
         id: tasksStore.currentId,
         name: this.name,
-        description: this.description
+        description: this.description,
+        user_id: userStore.user.id
       })
       this.$emit("close", false);
     }

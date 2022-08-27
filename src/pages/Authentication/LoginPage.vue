@@ -28,7 +28,7 @@ export default {
   methods: {
     async submitData(e){
       e.preventDefault();
-      const response = userStore.signIn({email: this.email, password: this.password})
+      const response = await userStore.signIn({email: this.email, password: this.password})
       if(response){
         this.$router.push('/dashboard')
       }

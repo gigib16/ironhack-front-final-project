@@ -20,7 +20,9 @@
 <script>
 import pinia from "@/store/store.js";
 import {useTasksStore} from "@/store/task";
+import {useUserStore} from "@/store/user";
 const tasksStore = useTasksStore(pinia)
+const userStore = useUserStore(pinia)
 
 export default {
   props: ["id", "name", "description", "status"],
@@ -40,7 +42,8 @@ export default {
       console.log(e.target.value);
       tasksStore.updateStatus({
         id: this.id,
-        status: e.target.value
+        status: e.target.value,
+        user_id: userStore.user.id
       });
     }
   },

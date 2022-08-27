@@ -20,7 +20,9 @@
 import TheModal from "@/components/TheModal";
 import pinia from "@/store/store.js";
 import {useTasksStore} from "@/store/task";
+import {useUserStore} from "@/store/user";
 const tasksStore = useTasksStore(pinia)
+const userStore = useUserStore(pinia)
 
 export default {
   components: {TheModal},
@@ -40,7 +42,8 @@ export default {
       if(this.name.length < 3) return alert('Name minimum 3 Characters')
       tasksStore.addTodo({
         name: this.name,
-        description: this.description
+        description: this.description,
+        user_id: userStore.user.id
       })
       this.$emit("close", false);
     }

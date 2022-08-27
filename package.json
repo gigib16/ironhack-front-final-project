@@ -15,6 +15,7 @@
     "pinia": "^2.0.20",
     "sass": "1.53.0",
     "sass-loader": "10",
+    "supabase": "^1.1.7",
     "vue": "^3.2.13",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.1.4"

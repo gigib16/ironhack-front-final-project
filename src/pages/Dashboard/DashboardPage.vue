@@ -51,8 +51,9 @@ export default {
       this.isModalDelete = x;
     }
   },
-  mounted() {
-    userStore.authUser();
+  async mounted() {
+    const userData = await userStore.authUser();
+    await tasksStore.getTodoSync(userData.id);
   },
 };
 </script>
