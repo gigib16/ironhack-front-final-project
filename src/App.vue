@@ -3,7 +3,6 @@
     <router-view name="header"/>
   </header>
   <router-view/>
-  <BaseLoading v-if="isLoading"/>
 </template>
 
 <script>
@@ -12,28 +11,6 @@ import {useUserStore} from "@/store/user";
 const userStore = useUserStore(pinia)
 
 export default {
-  // components: {BaseLoading},
-  data() {
-    return {};
-  },
-  methods: {
-
-    // NOTIF
-    // onClickNotif(value) {
-    //   const index = this.datas.filter((x) => {
-    //     return x.id !== value;
-    //   });
-    //   this.datas = index;
-    // },
-  },
-  computed: {
-    // notif() {
-    // return this.$store.getters.notif;
-    // },
-    // isLoading() {
-    // return this.$store.getters['isLoading'];
-    // },
-  },
   async created() {
     await userStore.authUser()
   },

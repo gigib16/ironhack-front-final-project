@@ -1,10 +1,9 @@
 import {defineStore} from 'pinia';
 import {supabase} from "../supabase";
-// import router from "@/router";
 
 export const useUserStore = defineStore('user', {
     state: () => ({
-        user: null, access_token: null, refresh_token: null,
+        user: null
     }), getters: {
         userData(state) {
             return state.user

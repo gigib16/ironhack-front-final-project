@@ -47,7 +47,7 @@ export default {
 
       const response = await userStore.signUp(payload);
       if(response){
-        this.$router.push('/dashboard')
+        this.$router.push('/')
       }
     },
   },

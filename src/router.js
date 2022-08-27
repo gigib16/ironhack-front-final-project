@@ -45,11 +45,6 @@ const router = createRouter({
     }, // our-domain.com/membership => UsersList
     { path: "/:notFound(.*)", redirect: "/404" }, // our-domain.com/membership => UsersList
   ],
-  linkActiveClass: "active",
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) return savedPosition;
-    return { left: 0, top: 0 };
-  },
 });
 
 router.beforeEach(function (to, _, next) {

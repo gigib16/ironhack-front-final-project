@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.6",
-    "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "node-sass": "7",
     "pinia": "^2.0.20",
@@ -17,7 +16,6 @@
     "sass-loader": "10",
     "supabase": "^1.1.7",
     "vue": "^3.2.13",
-    "vue-axios": "^3.4.1",
     "vue-router": "^4.1.4"
   },
   "devDependencies": {
