@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import store from "./store/task.js";
+import pinia from "@/store/store.js";
+import {useUserStore} from "@/store/user";
+const userStore = useUserStore(pinia)
 
 import NotFound from "./pages/NotFound";
 
@@ -50,9 +52,15 @@ const router = createRouter({
   },
 });
 
-// router.beforeEach(function (to, _, next) {
-//
-//   return next();
-// });
+router.beforeEach(function (to, _, next) {
+  const isAuthenticated = userStore.userData;
+  if(to.meta.authorizationPage && !!isAuthenticated) {
+    return next('/dashboard')
+  }
+  if(to.meta.authenticatedPage && !isAuthenticated) {
+    return next('/')
+  }
+  return next();
+});
 
 export default router;

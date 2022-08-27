@@ -1,9 +1,7 @@
-<template lang="">
+<template>
   <section>
     <h1>404</h1>
-    <h2>Oops! Halaman ini tidak dapat ditemukan</h2>
-    <h4>Mohon maaf, tetapi halaman yang anda cari tidak ada</h4>
-    <base-button :link="true" :mode="'btn-default'">KEMBALI KE BERANDA</base-button>
+    <h2>PAGE NOT FOUND</h2>
   </section>
 </template>
 

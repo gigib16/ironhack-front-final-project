@@ -7,7 +7,9 @@
 </template>
 
 <script>
-// import BaseLoading from "@/components/UI/BaseLoading";
+import pinia from "@/store/store.js";
+import {useUserStore} from "@/store/user";
+const userStore = useUserStore(pinia)
 
 export default {
   // components: {BaseLoading},
@@ -33,7 +35,7 @@ export default {
     // },
   },
   async created() {
-
+    await userStore.authUser()
   },
   watch: {},
 };

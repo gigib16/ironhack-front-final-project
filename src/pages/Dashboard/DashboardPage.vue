@@ -16,7 +16,9 @@ import ModalEdit from "@/pages/Dashboard/components/ModalEdit";
 import ModalDelete from "@/pages/Dashboard/components/ModalDelete";
 import pinia from "@/store/store.js";
 import {useTasksStore} from "@/store/task";
+import {useUserStore} from "@/store/user";
 const tasksStore = useTasksStore(pinia)
+const userStore = useUserStore(pinia)
 
 export default {
   components: {ModalDelete, ModalEdit, ModalAdd},
@@ -50,7 +52,7 @@ export default {
     }
   },
   mounted() {
-
+    userStore.authUser();
   },
 };
 </script>

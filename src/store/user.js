@@ -1,26 +1,44 @@
 import {defineStore} from 'pinia';
 import {supabase} from "../supabase";
+// import router from "@/router";
 
 export const useUserStore = defineStore('user', {
     state: () => ({
-        user: null,
+        user: null, access_token: null, refresh_token: null,
     }), getters: {
-        user(state) {
+        userData(state) {
             return state.user
         },
     }, actions: {
-        async signIn(payload) {
-            console.log(payload)
-            const {user, error} = await supabase.auth.signIn({
+        async authUser() {
+            const user = supabase.auth.user()
+            this.user = user;
+            return user;
+        }, async signIn(payload) {
+            const {user} = await supabase.auth.signIn({
                 email: payload.email, password: payload.password,
             });
-            console.log(user, error)
-        },
-        async signUp(payload) {
-            const {user, error} = await supabase.auth.signUp({
+            if (user) {
+                this.user = user;
+                return true;
+            }
+            return false;
+        }, async signUp(payload) {
+            const {user} = await supabase.auth.signUp({
                 email: payload.email, password: payload.password,
             });
-            console.log(user, error)
+            if (user) {
+                this.user = user;
+                return true;
+            }
+            return false;
+        }, async signOut() {
+            const {error} = await supabase.auth.signOut();
+            if (!error) {
+                this.user = null;
+                return true
+            }
+            return false
         },
     },
 })

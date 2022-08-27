@@ -9,7 +9,7 @@
         <input v-model="password2" type="password" placeholder="Repear password" required>
         <button type="submit">Create new user</button>
       </form>
-      <p class>Already registered? <a href="#">Login here</a></p>
+      <p class>Already registered? <a href="/">Login here</a></p>
     </div>
   </main>
 </template>
@@ -45,7 +45,10 @@ export default {
         password: this.password,
       };
 
-      await userStore.signUp(payload)
+      const response = await userStore.signUp(payload);
+      if(response){
+        this.$router.push('/dashboard')
+      }
     },
   },
   created() {

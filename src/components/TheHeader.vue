@@ -14,6 +14,10 @@
 </template>
 
 <script>
+import pinia from "@/store/store.js";
+import {useUserStore} from "@/store/user";
+const userStore = useUserStore(pinia)
+
 export default {
   data() {
     return {
@@ -24,12 +28,51 @@ export default {
     async logout() {
       // await this.$store.commit('setUser', null);
       // await this.$store.commit('isAuthenticad', false);
-      await this.$auth0.logout({returnTo: window.location.origin});
+      const response = await userStore.signOut()
+      if(response){
+        this.$router.push('/')
+      }
     }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/scss/components/TheHeader.scss";
+header {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  z-index: 99;
+  background-image: linear-gradient(to bottom right, #b996ff, #4657b9);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 5px #999;
+  nav {
+    padding: 0 50px;
+    &.header {
+      height: 75px;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      > a.logo {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        > img {
+          width: 200px;
+        }
+      }
+      div.contactConatiner {
+        display: flex;
+        a {
+          text-decoration: none;
+          padding: 0;
+          cursor: pointer;
+          font-family: inherit;
+        }
+      }
+    }
+  }
+}
 </style>

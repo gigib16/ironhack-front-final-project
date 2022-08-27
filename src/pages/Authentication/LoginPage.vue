@@ -26,9 +26,12 @@ export default {
   },
   computed: {},
   methods: {
-    submitData(e){
+    async submitData(e){
       e.preventDefault();
-      userStore.signIn({email: this.email, password: this.password})
+      const response = userStore.signIn({email: this.email, password: this.password})
+      if(response){
+        this.$router.push('/dashboard')
+      }
     }
   },
   created() {
