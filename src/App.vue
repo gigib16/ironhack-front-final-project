@@ -20,10 +20,4 @@ export default {
 
 <style lang="scss">
 @import "./scss/app.scss";
-
-//.notif-container-parent {
-//  position: fixed;
-//  z-index: 999;
-//  bottom: 50px;
-//}
 </style>

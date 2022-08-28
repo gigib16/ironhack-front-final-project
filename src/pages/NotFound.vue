@@ -8,18 +8,14 @@
 <style lang="scss" scoped>
 section {
   padding: 100px 0;
-
-  
-  body{
-    background-image: linear-gradient(to bottom right, #b996ff, #4657b9);
-  }
-
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #b996ff, #4657b9);
   h1 {
     margin: 0;
     font-size: 150px;
     font-family: "Roboto Bold";
     font-weight: bold;
-    color: #093eb6;
+    color: #FFFFFF;
     line-height: 1;
     text-align: center;
   }
@@ -28,6 +24,7 @@ section {
     margin: 0 0 10px;
     font-weight: 600;
     text-align: center;
+    color: #FFFFFF;
   }
   h4 {
     margin-top: 0;

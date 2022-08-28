@@ -69,5 +69,11 @@ export default {
       padding: 0 20px 20px;
     }
   }
+  @media (max-width: 768px) {
+    div.modal-container{
+      min-width: 300px;
+      width: 90%;
+    }
+  }
 }
 </style>

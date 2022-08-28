@@ -62,6 +62,7 @@ export default {
 main.dashboard {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   padding: 80px 20px 20px;
 }
 </style>

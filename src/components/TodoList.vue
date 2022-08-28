@@ -72,5 +72,9 @@ export default {
     align-items: flex-start;
     padding: 20px 20px 0;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 50px;
+  }
 }
 </style>
