@@ -55,6 +55,10 @@ export default {
       padding: 10px;
       border-radius: 5px;
       cursor: pointer;
+      &:hover {
+        background-image:linear-gradient(to bottom right, #4657b9, #4657b9);
+        font-weight:500;
+      }
     }
     > h1 {
       margin: 0;
