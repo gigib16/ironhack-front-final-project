@@ -9,7 +9,7 @@
         <input v-model="password2" type="password" placeholder="Repear password" required>
         <button type="submit">Create new user</button>
       </form>
-      <p class>Already registered? <a href="/">Login here</a></p>
+      <p class>Already registered? <router-link to="/">Login here</router-link></p>
     </div>
   </main>
 </template>

@@ -8,7 +8,7 @@
         <input v-model="password" type="password" placeholder="Enter your password" required>
         <button type="submit">Sign In</button>
       </form>
-      <p class>Not registered yet? <a href="/signup">Create a new user</a></p>
+      <p class>Not registered yet? <router-link to="/signup">Create a new user</router-link></p>
     </div>
   </main>
 </template>
