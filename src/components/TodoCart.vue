@@ -86,13 +86,13 @@ export default {
   }
   > h2 {
     margin: 0 0 10px;
-    font-size: 22.5px;
+    font-size: 20.5px;
   }
 
   > p {
     color: #000000;
     font-weight: normal;
-    font-size: 17.5px;
+    font-size: 17px;
     margin: 0;
   }
 
@@ -100,16 +100,18 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 18px;
+
 
     > label {
-      font-weight: bolder;
+      font-weight:600;
       margin-bottom: 10px;
     }
 
     > select {
       width: 100%;
       height: 40px;
+      padding:10px;
     }
   }
 }

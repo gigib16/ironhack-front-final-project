@@ -31,12 +31,12 @@ export default {
     async submitForm(e) {
       e.preventDefault();
       if (this.password.length < 8) {
-        alert("Password min. 8 characters");
+        alert("Password must have min. 8 characters");
         return;
       }
 
       if (this.password !== this.password2) {
-        alert("No same password!");
+        alert("Passwords don't match");
         return;
       }
 

@@ -2,7 +2,7 @@
   <the-modal title="Delete task" @close="close">
     <form class="modal" autocomplete="false" @submit="submitDelete">
       <button>
-        Delete this task now!
+        Delete this task
       </button>
     </form>
   </the-modal>

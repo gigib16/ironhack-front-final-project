@@ -8,7 +8,12 @@
 <style lang="scss" scoped>
 section {
   padding: 100px 0;
-  text-align: center;
+
+  
+  body{
+    background-image: linear-gradient(to bottom right, #b996ff, #4657b9);
+  }
+
   h1 {
     margin: 0;
     font-size: 150px;
@@ -16,16 +21,19 @@ section {
     font-weight: bold;
     color: #093eb6;
     line-height: 1;
+    text-align: center;
   }
   h2 {
     font-size: 40px;
     margin: 0 0 10px;
     font-weight: 600;
+    text-align: center;
   }
   h4 {
     margin-top: 0;
     margin-bottom: 30px;
     font-size: 21px;
+      text-align: center;
   }
 }
 </style>

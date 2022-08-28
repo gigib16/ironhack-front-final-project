@@ -45,7 +45,7 @@ export default {
 
   > div.modal-container {
     z-index: 9999;
-    background-color: #FFFFFF;
+    background-color:#ffffff;
     border-radius: 5px;
     min-width: 500px;
     overflow: hidden;

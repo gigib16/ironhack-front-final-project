@@ -5,12 +5,15 @@
       ><img
           alt="LOGO"
           src="../assets/logo.png"
+
+          
       /></router-link>
       <div class="contactConatiner">
         <a @click="logout()" class="btn">Log out</a>
       </div>
     </nav>
   </header>
+  <br><br><br>
 </template>
 
 <script>
@@ -46,7 +49,7 @@ header {
   background-image: linear-gradient(to bottom right, #b996ff, #4657b9);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  box-shadow: 0 0 5px #999;
+  box-shadow: 0 0 2px rgb(255, 255, 255);
   nav {
     padding: 0 50px;
     &.header {
